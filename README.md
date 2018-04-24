@@ -10,8 +10,8 @@ Project for "Verteilte Systeme" lecture at HS Esslingen, SS18.
 * Thymeleaf
 
 ## Task:
-https://github.com/maeddes/HSE18_01
-http://gist.asciidoctor.org/?5d53ec092a4f79907c653388092f619c
+* https://github.com/maeddes/HSE18_01
+* http://gist.asciidoctor.org/?5d53ec092a4f79907c653388092f619c
 
 ## Build the app:
 ```
