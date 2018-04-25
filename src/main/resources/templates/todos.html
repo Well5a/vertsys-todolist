@@ -1,29 +1,65 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Todos</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
+    <head>
+        <title>Todos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <style>
+        body {
+            margin: 0;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        #main {
+            max-width: 40rem;
+            position: relative;
+            margin: auto;
+        }
+        .table-wrapper {
+            width: 100%;
+            border: 1px solid grey;
+            border-radius: 0.5rem;
+        }
+        .table-wrapper > table {
+            width: 100%;
+            font-size: 1.2rem;
+            border-collapse: collapse;
+        }
+        .table-wrapper > table td {
+            padding: 0.2rem;
+        }
+        .table-wrapper > table tbody > tr {
+            border-width: 1px 0px;
+            border-style: solid; 
+            border-color:grey;
+        }
+        .table-wrapper > table tbody > tr:last-child {
+            border: none;
+        }
+        
+    </style>
+    <body>
 
-<h1>Todos</h1>
-
-<table>
-    <thead>
-    <tr>
-        <td>Id</td>
-        <td>Todo</td>
-        <td>IsDone</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="todo: ${todos}">
-        <td th:text="${todo.Id}"/>
-        <td th:text="${todo.todo}"/>
-        <td th:text="${todo.isDone}"/>
-    </tr>
-    </tbody>
-</table>
-
-</body>
+        
+        <div id="main">
+            <h1>Todos</h1>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Todo</td>
+                            <td>IsDone</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="todo: ${todos}">
+                            <td th:text="${todo.Id}"/>
+                            <td th:text="${todo.todo}"/>
+                            <td th:text="${todo.isDone}"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>
 
