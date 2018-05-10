@@ -49,14 +49,18 @@
         }
         button {
             border: none;
-            background-color: lightgreen;
+            background-color: limegreen;
             border-radius: 0.4rem;
             color: white;
         }
         button:hover {
             box-shadow: 0 0.4rem 0.8rem 0 lightgrey;
         }
-        
+        input[type=text] {
+            width: 100%;
+            background-color: #eee;
+            border: none;
+        }
     </style>
     <script th:inline="javascript">
 	/*<![CDATA[*/
@@ -72,6 +76,18 @@
                 req.send();
             };
         };
+        var addTodo = function() {
+            var itemname = document.getElementById("todoinput").value;
+            if (itemname == null || itemname == "") 
+                return;
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200)
+                    location.reload(true);
+            };
+	    req.open("POST", "/" + itemname);
+            req.send();
+        }
         /*]]>*/
     </script>
     <body>
@@ -92,6 +108,7 @@
                             <td th:text="${todo.todo}"/>
                             <td><button th:onclick="'makeDeleteHandler(\'' + ${todo.todo} + '\')(event)'">Done</button></td>
                         </tr>
+                        <tr><td><input id="todoinput" type="text" name="todo" maxlength="50"></input></td><td><button onclick="addTodo()">Add</button></td></tr>
                     </tbody>
                 </table>
             </div>
