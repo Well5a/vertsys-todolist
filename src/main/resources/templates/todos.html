@@ -72,7 +72,7 @@
                     if (this.readyState == 4 && this.status == 200)
                         location.reload(true);
                 };
-	        req.open("DELETE", "/" + itemname);
+	        req.open("DELETE", "/" + encodeURI(itemname));
                 req.send();
             };
         };
@@ -85,7 +85,7 @@
                 if (this.readyState == 4 && this.status == 200)
                     location.reload(true);
             };
-	    req.open("POST", "/" + itemname);
+	    req.open("POST", "/" + encodeURI(itemname));
             req.send();
         }
         /*]]>*/
