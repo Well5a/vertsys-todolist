@@ -11,19 +11,19 @@ public class TodoItem
 	@GeneratedValue
 	long Id;
 	
-	String todo;
+	String name;
 	boolean isDone;
 	
 	public TodoItem() {}
 	
-	public TodoItem(String todo, boolean isDone)
+	public TodoItem(String name, boolean isDone)
 	{
-		this.todo 	= todo;
+		this.name 	= name;
 		this.isDone = isDone;
 	}
 	
-	public String getTodo() {
-		return todo;
+	public String getName() {
+		return name;
 	}
 	
 	public long getId() {

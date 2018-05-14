@@ -33,7 +33,7 @@ public class TodoItemController
 	@DeleteMapping("/{todo}")
 	String deleteTodo(@PathVariable String todo)
 	{
-		repo.delete(repo.findByTodo(todo));
+		repo.delete(repo.findByName(todo));
 		return "removed "+todo+" from todo list";
 	}
 }

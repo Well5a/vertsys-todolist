@@ -11,5 +11,5 @@ import de.hsesslingen.model.TodoItem;
 @Repository
 public interface TodoItemRepository extends CrudRepository<TodoItem, Long>
 {
-	public List<TodoItem> findByTodo(String todo);
+	public List<TodoItem> findByName(String name);
 }

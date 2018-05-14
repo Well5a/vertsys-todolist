@@ -76,6 +76,7 @@
                 req.send();
             };
         };
+        
         var addTodo = function() {
             var itemname = document.getElementById("todoinput").value;
             if (itemname == null || itemname == "") 
@@ -91,8 +92,6 @@
         /*]]>*/
     </script>
     <body>
-
-        
         <div id="main">
             <h1>Todos</h1>
             <div class="table-wrapper">
@@ -105,8 +104,8 @@
                     </thead>
                     <tbody>
                         <tr th:each="todo: ${todos}">
-                            <td th:text="${todo.todo}"/>
-                            <td><button th:onclick="'makeDeleteHandler(\'' + ${todo.todo} + '\')(event)'">Done</button></td>
+                            <td th:text="${todo.name}"/>
+                            <td><button th:onclick="'makeDeleteHandler(\'' + ${todo.name} + '\')(event)'">Done</button></td>
                         </tr>
                         <tr><td><input id="todoinput" type="text" name="todo" maxlength="50"></input></td><td><button onclick="addTodo()">Add</button></td></tr>
                     </tbody>
