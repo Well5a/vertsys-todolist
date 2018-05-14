@@ -27,10 +27,17 @@
             border-collapse: collapse;
         }
         .table-wrapper > table thead {
-            background-color:rgb(231, 248, 255)
+            background-color:rgb(81, 162, 196);
+            height: 2.6rem;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
         }
         .table-wrapper > table td {
-            padding: 0.2rem;
+            padding: 0.2rem 1rem;
+        }
+        .table-wrapper > table td:last-child {
+            width: 4rem;
         }
         .table-wrapper > table tbody > tr {
             border-width: 1px 0px;
@@ -40,8 +47,49 @@
         .table-wrapper > table tbody > tr:last-child {
             border: none;
         }
-        
+        button {
+            border: none;
+            background-color: limegreen;
+            border-radius: 0.4rem;
+            color: white;
+        }
+        button:hover {
+            box-shadow: 0 0.4rem 0.8rem 0 lightgrey;
+        }
+        input[type=text] {
+            width: 100%;
+            background-color: #eee;
+            border: none;
+        }
     </style>
+    <script th:inline="javascript">
+	/*<![CDATA[*/
+        var makeDeleteHandler = function(itemname) {
+	    return function(e) {
+                e.stopPropagation();
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200)
+                        location.reload(true);
+                };
+	        req.open("DELETE", "/" + encodeURI(itemname));
+                req.send();
+            };
+        };
+        var addTodo = function() {
+            var itemname = document.getElementById("todoinput").value;
+            if (itemname == null || itemname == "") 
+                return;
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200)
+                    location.reload(true);
+            };
+	    req.open("POST", "/" + encodeURI(itemname));
+            req.send();
+        }
+        /*]]>*/
+    </script>
     <body>
 
         
@@ -51,18 +99,16 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>Id</td>
                             <td>Todo</td>
-                            <td>IsDone</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="todo: ${todos}">
-                            <td th:text="${todo.Id}"/>
                             <td th:text="${todo.todo}"/>
-                            <td th:text="${todo.isDone}"/>
-                            <td><button onClick="/todo/${todo}', {method: 'DELETE'})"></button></td>
+                            <td><button th:onclick="'makeDeleteHandler(\'' + ${todo.todo} + '\')(event)'">Done</button></td>
                         </tr>
+                        <tr><td><input id="todoinput" type="text" name="todo" maxlength="50"></input></td><td><button onclick="addTodo()">Add</button></td></tr>
                     </tbody>
                 </table>
             </div>
