@@ -30,10 +30,11 @@ public class TodoItemController
 		return "added "+todo+" to todo list";
 	}
 	
-	@DeleteMapping("/{todo}")
-	String deleteTodo(@PathVariable String todo)
+	@DeleteMapping("/{id}")
+	String deleteTodo(@PathVariable Long id)
 	{
-		repo.delete(repo.findByName(todo));
-		return "removed "+todo+" from todo list";
+		TodoItem todo = repo.findOne(id);
+		repo.delete(todo);
+		return "removed "+todo.getName()+" from todo list";
 	}
 }
