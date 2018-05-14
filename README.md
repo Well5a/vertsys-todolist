@@ -37,8 +37,8 @@ mvn clean package
 
 ## Configuration:
 There are two config profiles, a repo where the config files are stored and a server that provides those files for the app:
-* dev: mvn spring-boot:run -Dactive-profile=dev
-* prod: mvn spring-boot:run -Dactive-profile=dev
+* dev: mvn spring-boot:run -Drun.profiles=dev
+* prod: mvn spring-boot:run -Drun.profiles=dev
 * config repo: https://github.com/Well5a/config-repo
 * config server: https://github.com/Well5a/config-server
 
