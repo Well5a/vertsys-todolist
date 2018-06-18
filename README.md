@@ -23,7 +23,7 @@ mvn clean package
 * `curl -X POST localhost:8080/task` to add a task to the list
 * `curl -X DELETE localhost:8080/task` to delete a task from the list
 
-## Docker commands:
+## Docker commands (deprecated):
 * Create image: `docker build -t helloworld .`
 * Run container: `docker run -p 1337:8080 helloworld` (app is available on port 1337)
 * Push image to Docker Hub: https://docs.docker.com/docker-cloud/builds/push-images/
@@ -38,7 +38,7 @@ mvn clean package
 ## Configuration:
 There are two config profiles, a repo where the config files are stored and a server that provides those files for the app:
 * dev: mvn spring-boot:run -Drun.profiles=dev
-* prod: mvn spring-boot:run -Drun.profiles=dev
+* prod: mvn spring-boot:run -Drun.profiles=prod
 * config repo: https://github.com/Well5a/config-repo
 * config server: https://github.com/Well5a/config-server
 
